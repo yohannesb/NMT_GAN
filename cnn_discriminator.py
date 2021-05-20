@@ -51,7 +51,7 @@ def highway(input_, size, layer_size=1, bias=-2, f=tf.nn.relu, reuse_var=False):
     output = input_
     if reuse_var == True:
         tf.get_variable_scope().reuse_variables()
-    for idx in xrange(layer_size):
+    for idx in range(layer_size):
         output = f(linear(output, size, 0, scope='output_lin_%d' %idx))
         transform_gate = tf.sigmoid(linear(input_, size, 0, scope='transform_lin_%d'%idx) +bias)
         carry_gate = 1. - transform_gate
@@ -62,7 +62,7 @@ def highway_s(input_, size, layer_size=1, bias=-2, f=tf.nn.relu, reuse_var=False
     output = input_
     if reuse_var == True:
         tf.get_variable_scope().reuse_variables()
-    for idx in xrange(layer_size):
+    for idx in range(layer_size):
         output = f(linear(output, size, 0, scope='output_s_lin_%d' %idx))
         transform_gate = tf.sigmoid(linear(input_, size, 0, scope='transform_s_lin_%d'%idx) +bias)
         carry_gate = 1. - transform_gate
